@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: hello2
+spec:
+  host: hello-world.apps-crc.testing
+  to:
+    kind: Service
+    name: hello2
+    weight: 100
+  port:
+    targetPort: 8000
+  wildcardPolicy: None
+

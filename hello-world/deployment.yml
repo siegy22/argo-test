@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello2
+  labels:
+    app: hello2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello2
+  template:
+    metadata:
+      labels:
+        app: hello2
+    spec:
+      containers:
+      - name: hello2
+        image: crccheck/hello-world
+        ports:
+        - containerPort: 8000
