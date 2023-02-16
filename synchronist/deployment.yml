@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synchronist
+  labels:
+    app: synchronist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: synchronist
+  template:
+    metadata:
+      labels:
+        app: synchronist
+    spec:
+      containers:
+      - name: synchronist
+        image: docker.io/siegy22/synchronist@sha256:bbee671d39cb118f073cb04cd1a70ed4523e066b1e5f89992f9a7bb3e364ff43
+        #command: ["cd /synchronist && bundle exec rails --binding 0.0.0.0 --port 3000"]
+        #args: ["exec rails --binding 0.0.0.0 --port 3000"]
+        ports:
+          - containerPort: 3000
+        env:
+          - name: SECRET_KEY_BASE
+            value: "XDrQsObWtmTI2aU9ar2iVmSXV3MkGICv"
+          - name: SYNCHRONIST_USERNAME
+            value: "sync"
+          - name: SYNCHRONIST_PASSWORD
+            value: "sync"
+          - name: DATABASE_URL
+            value: "postgres://synchronist:passsword@$(SYNCHRONIST_DB_SERVICE_SERVICE_HOST):5432/synchronist"

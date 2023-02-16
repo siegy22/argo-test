@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: synchronist
+spec:
+  host: synchronist.apps-crc.testing
+  to:
+    kind: Service
+    name: synchronist
+    weight: 100
+  port:
+    targetPort: 3000
+  wildcardPolicy: None
+
