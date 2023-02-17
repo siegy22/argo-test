@@ -28,5 +28,7 @@ spec:
             value: "sync"
           - name: SYNCHRONIST_PASSWORD
             value: "sync"
+          - name: REDIS_URL
+            value: "redis://:p82c19ecabaae60c4cac4d45ca27f6fe9ccf5799575c5226a087a6528914f17fe@ec2-54-75-211-40.eu-west-1.compute.amazonaws.com:21369"
           - name: DATABASE_URL
             valueFrom: { secretKeyRef: { name: postgres-pguser-postgres, key: uri } }
