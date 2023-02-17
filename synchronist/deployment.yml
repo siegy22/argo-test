@@ -29,4 +29,4 @@ spec:
           - name: SYNCHRONIST_PASSWORD
             value: "sync"
           - name: DATABASE_URL
-            value: "postgres://synchronist:passsword@$(SYNCHRONIST_DB_SERVICE_SERVICE_HOST):5432/synchronist"
+            valueFrom: { secretKeyRef: { name: postgres-pguser-postgres, key: uri } }
