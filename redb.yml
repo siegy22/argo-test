@@ -1,0 +1,9 @@
+kind: RedisEnterpriseDatabase
+apiVersion: app.redislabs.com/v1alpha1
+metadata:
+  name: redb
+  namespace: synchronist
+spec:
+  redisEnterpriseCluster:
+    name: rec
+
