@@ -3,7 +3,7 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: synchronist
 spec:
-  host: synchronist.apps-crc.testing
+  host: synchronist.apps.openshift.androme.da
   to:
     kind: Service
     name: synchronist

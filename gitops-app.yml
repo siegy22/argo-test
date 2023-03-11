@@ -2,10 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: synchronist
+  namespace: synchronist
 spec:
   destination:
-    namespace: synchronist
     server: 'https://kubernetes.default.svc'
+    namespace: synchronist
   source:
     path: synchronist
     repoURL: 'https://github.com/siegy22/argo-test'
