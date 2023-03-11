@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synchronist-worker
+  labels:
+    app: synchronist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: synchronist
+  template:
+    metadata:
+      labels:
+        app: synchronist
+    spec:
+      containers:
+      - name: synchronist
+        image: docker.io/siegy22/synchronist@sha256:b039fe71994f208af9c87893457557b0453c6668e387dfe7137ca4012df0c8ed
+        command: ["bundle", "exec", "sidekiq"]
+        env:
+          - name: SECRET_KEY_BASE
+            value: "XDrQsObWtmTI2aU9ar2iVmSXV3MkGICv"
+          - name: SYNCHRONIST_USERNAME
+            value: "sync"
+          - name: SYNCHRONIST_PASSWORD
+            value: "sync"
+          - name: REDIS_URL
+            value: "redis://:4mP6YVwp@redb.synchronist.svc.cluster.local:16769"
+          - name: DATABASE_URL
+            valueFrom: { secretKeyRef: { name: postgres-pguser-postgres, key: uri } }
