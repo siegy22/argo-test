@@ -29,6 +29,6 @@ spec:
           - name: SYNCHRONIST_PASSWORD
             value: "sync"
           - name: REDIS_URL
-            value: "redis://rec.synchronist.svc.cluster.local"
+            value: "redis://redb.synchronist.svc.cluster.local:16769"
           - name: DATABASE_URL
             valueFrom: { secretKeyRef: { name: postgres-pguser-postgres, key: uri } }
